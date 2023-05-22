@@ -30,107 +30,128 @@ function myFunction() {
 💡 NOTE: you may use a for loop for this function if you wish 
 */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(num) {
+  let sum = 0
+  for (let index = 0; index <= num; index++) {
+    sum = sum + index
   }
- 
+  return sum
+}
+
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
 
 const zooAnimals = [
-    { animal_name: "Jackal, asiatic", population: 5, scientific_name: "Canis aureus", state: "Kentucky" },
-    { animal_name: "Screamer, southern", population: 1, scientific_name: "Chauna torquata", state: "Alabama" },
-    { animal_name: "White spoonbill", population: 8, scientific_name: "Platalea leucordia", state: "Georgia" },
-    { animal_name: "White-cheeked pintail", population: 1, scientific_name: "Anas bahamensis", state: "Oregon" },
-    { animal_name: "Black-backed jackal", population: 2, scientific_name: "Canis mesomelas", state: "Washington" },
-    { animal_name: "Brolga crane", population: 9, scientific_name: "Grus rubicundus", state: "New Mexico" },
-    { animal_name: "Common melba finch", population: 5, scientific_name: "Pytilia melba", state: "Pennsylvania" },
-    { animal_name: "Pampa gray fox", population: 10, scientific_name: "Pseudalopex gymnocercus", state: "Connecticut" },
-    { animal_name: "Hawk-eagle, crowned", population: 10, scientific_name: "Spizaetus coronatus", state: "Florida" },
-    { animal_name: "Australian pelican", population: 5, scientific_name: "Pelecanus conspicillatus", state: "West Virginia" },
-  ];
-  
-  /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
-  The zoos want to display both the scientific name and the animal name in front of the habitats. 
-    1. Receive the zooAnimals array as an argument passed from a parameter 
-    2. Use .forEach() to populate a new array called displayNames that will be an array of strings with only the animal name and scientific name of each animal
-    3. Return the new array
-  💡 NOTE: the array returned should be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
-  */
+  { animal_name: "Jackal, asiatic", population: 5, scientific_name: "Canis aureus", state: "Kentucky" },
+  { animal_name: "Screamer, southern", population: 1, scientific_name: "Chauna torquata", state: "Alabama" },
+  { animal_name: "White spoonbill", population: 8, scientific_name: "Platalea leucordia", state: "Georgia" },
+  { animal_name: "White-cheeked pintail", population: 1, scientific_name: "Anas bahamensis", state: "Oregon" },
+  { animal_name: "Black-backed jackal", population: 2, scientific_name: "Canis mesomelas", state: "Washington" },
+  { animal_name: "Brolga crane", population: 9, scientific_name: "Grus rubicundus", state: "New Mexico" },
+  { animal_name: "Common melba finch", population: 5, scientific_name: "Pytilia melba", state: "Pennsylvania" },
+  { animal_name: "Pampa gray fox", population: 10, scientific_name: "Pseudalopex gymnocercus", state: "Connecticut" },
+  { animal_name: "Hawk-eagle, crowned", population: 10, scientific_name: "Spizaetus coronatus", state: "Florida" },
+  { animal_name: "Australian pelican", population: 5, scientific_name: "Pelecanus conspicillatus", state: "West Virginia" },
+];
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
-  
-
-  /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
-  The zoo needs a list of all their animal's names converted to lower case. 
-  Use lowerCaseNames to do the following:
+/* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
+The zoos want to display both the scientific name and the animal name in front of the habitats. 
   1. Receive the zooAnimals array as an argument passed from a parameter 
-  2. Use .map() to create a new array of strings with the animal's names in lowercase
+  2. Use .forEach() to populate a new array called displayNames that will be an array of strings with only the animal name and scientific name of each animal
   3. Return the new array
-  🌟 EXAMPLE of returned array: ['jackal, asiatic', .....]
-  💡 NOTE: Do some research for other methods that can help help you
-  */
+💡 NOTE: the array returned should be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
+*/
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+function animalNames(zooAnimals) {
+  let displayNames = [];
+  zooAnimals.forEach(animal => {
+    displayNames.push(`name: ${animal.animal_name}, scientific: ${animal.scientific_name}`)
+  });
+  return displayNames
+}
+
+
+/* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
+The zoo needs a list of all their animal's names converted to lower case. 
+Use lowerCaseNames to do the following:
+1. Receive the zooAnimals array as an argument passed from a parameter 
+2. Use .map() to create a new array of strings with the animal's names in lowercase
+3. Return the new array
+🌟 EXAMPLE of returned array: ['jackal, asiatic', .....]
+💡 NOTE: Do some research for other methods that can help help you
+*/
+
+function lowerCaseNames(zooAnimals) {
+  let animalNames = []
+  zooAnimals.map((animals) => {
+    animalNames.push(animals.animal_name.toLowerCase())
+  })
+  return animalNames
+}
+
+
+/* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
+The zoo is concerned about animals with a lower population count. 
+Use lowPopulationAnimals to do the following: 
+1. Receive the zooAnimals array as an argument passed from a parameter 
+2. Use .filter() to create a new array of objects which contains only the animals with a population of less than 5
+3. Return this new array
+*/
+
+function lowPopulationAnimals(zooAnimals) {
+  const filterlowPopulation = zooAnimals.filter((animal) => {
+    return animal.population < 5;
+  });
+  return filterlowPopulation
+}
+
+
+/* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
+The zoo needs to know their total animal population across the United States. 
+USe USApop to do the following:
+1. Receive the zooAnimals array as an argument passed from a parameter 
+2. Use the .reduce() method to find the total population from the zoosAnimals array
+3. Return the total population
+💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
+*/
+
+function USApop(zooAnimals) {
+  const reduceanimalPopulations = zooAnimals.reduce((total, animal) => {
+    return total + animal.population;
+  }, 0);
+  return reduceanimalPopulations
+}
+
+console.log(USApop(zooAnimals))
+
+
+// 🦁🦁🦁 Callbacks 🦁🦁🦁  
+/* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
+Use the higher-order function called consume to do the following:
+  1. Receive 3 parameters: a, b and cb. The first two parameters (a and b) can take any argument (we can pass any value as an argument) and the last parameter (cb) accepts a callback
+  2. Return the invocation of cb taking `a` and `b` as its arguments
   
-  
-  /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
-  The zoo is concerned about animals with a lower population count. 
-  Use lowPopulationAnimals to do the following: 
-  1. Receive the zooAnimals array as an argument passed from a parameter 
-  2. Use .filter() to create a new array of objects which contains only the animals with a population of less than 5
-  3. Return this new array
-  */
+  💡 NOTE: The tests for 'consume' will pass if it is created correctly and also after you correctly complete the functions 'add' and 'greeting' below in Step 2.
+*/
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
-  
+function consume(a, b, callback) {
+  return callback(a, b)
+}
 
-  /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
-  The zoo needs to know their total animal population across the United States. 
-  USe USApop to do the following:
-  1. Receive the zooAnimals array as an argument passed from a parameter 
-  2. Use the .reduce() method to find the total population from the zoosAnimals array
-  3. Return the total population
-  💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
-  */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
-  
-  
-  // 🦁🦁🦁 Callbacks 🦁🦁🦁  
-  /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
-  Use the higher-order function called consume to do the following:
-    1. Receive 3 parameters: a, b and cb. The first two parameters (a and b) can take any argument (we can pass any value as an argument) and the last parameter (cb) accepts a callback
-    2. Return the invocation of cb taking `a` and `b` as its arguments
-    
-    💡 NOTE: The tests for 'consume' will pass if it is created correctly and also after you correctly complete the functions 'add' and 'greeting' below in Step 2.
-  */
+// 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
-  }
- 
-  
-  // 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁
+/*  Use add to do the following:
+1. Receive two numbers as an argument that are passed in from its first and second parameters
+2. Return the sum of those numbers
+*/
 
- /*  Use add to do the following:
- 1. Receive two numbers as an argument that are passed in from its first and second parameters
- 2. Return the sum of those numbers
- */
+function add(num1, num2) {
+  let res = num1 + num2
 
-function add(/*Your Code Here */){
-    /*Your Code Here*/
-  }
+  return res
+}
 
 
 /* Use multiply to do the following:
@@ -138,29 +159,33 @@ function add(/*Your Code Here */){
 2. Return the product of those numbers
 */
 
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
-  }
+function multiply(num1, num2) {
+  let res = num1 * num2
+
+  return res
+}
 
 
- /* Use greeting to do the following:
+/* Use greeting to do the following:
 1. Receive two strings (a first name and last name) as an argument that are passed in from its first and second parameters
 2. Return "Hello {first-name} {last-name}, nice to meet you!"
 💡 NOTE: The string returned must match the format above or the test will not pass!
 */
 
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
-  }
-  
-  
+function greeting(str1, str2) {
+  return `Hello ${str1} ${str2}, nice to meet you!`
+}
+
+
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
 // console.log(consume(2, 2, add)); // 4
 // console.log(consume(10, 16, multiply)); // 160
 // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
-
+console.log(consume(2, 2, add));
+console.log(consume(10, 16, multiply));
+console.log(consume("Mary", "Poppins", greeting));
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 
@@ -175,8 +200,10 @@ function greeting(/*Your Code Here */){
 - Instances of CuboidMaker should initialize `length`, `width` and `height` properties
 */
 
-function CuboidMaker(/*Your Code Here */){
-  /*Your Code Here */
+function CuboidMaker(object) {
+  this.length = object.length;
+  this.width = object.width;
+  this.height = object.height
 }
 
 
@@ -184,7 +211,9 @@ function CuboidMaker(/*Your Code Here */){
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   💡 NOTE: Formula for cuboid volume: length * width * height   
 */
-
+CuboidMaker.prototype.volume = function () {
+  return this.length * this.width * this.height
+}
 
 
 
@@ -192,15 +221,17 @@ function CuboidMaker(/*Your Code Here */){
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   💡 NOTE: Formula for cuboid surface area: 2 * (length * width + length * height + width * height)  
 */
-
-
+CuboidMaker.prototype.surfaceArea = function () {
+  return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
+}
 
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-
+const cuboid = new CuboidMaker(4, 5, 5);
+console.log(cuboid);
 
 
 
@@ -208,15 +239,24 @@ function CuboidMaker(/*Your Code Here */){
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
 // console.log(cuboid.volume()); // 100
 // console.log(cuboid.surfaceArea()); // 130
- 
+
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //Using CuboidMakerTwo, take your prototypes from above and refactor into class syntax. Then, create an object called cuboidTwo that uses the new keyword to use our CuboidMakerTwo class.
- 
-class CuboidMakerTwo{
 
+class CuboidMakerTwo {
+  constructor(object) {
+    this.length = object.length
+    this.width = object.width
+    this.height = object.height
+  }
 }
-
+CuboidMakerTwo.prototype.volume = function () {
+  return this.length * this.width * this.height
+}
+CuboidMakerTwo.prototype.surfaceArea = function () {
+  return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
+}
 
 
 
@@ -228,26 +268,26 @@ class CuboidMakerTwo{
 
 
 
-  
 
 
-  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
-  function foo(){
-    console.log('its working');
-    return 'bar';
-  }
-  foo();
-  module.exports = {
-    foo,
-    summation,
-    animalNames,
-    lowerCaseNames,
-    lowPopulationAnimals,
-    USApop,
-    consume, 
-    add,
-    multiply,
-    greeting,
-    CuboidMaker,
-    CuboidMakerTwo
-  }
+
+/* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
+function foo() {
+  console.log('its working');
+  return 'bar';
+}
+foo();
+module.exports = {
+  foo,
+  summation,
+  animalNames,
+  lowerCaseNames,
+  lowPopulationAnimals,
+  USApop,
+  consume,
+  add,
+  multiply,
+  greeting,
+  CuboidMaker,
+  CuboidMakerTwo
+}
